@@ -1,0 +1,32 @@
+# Build customization
+builds:
+  - binary: bq-partition-porter
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+
+# Archive customization
+archive:
+  format: zip
+  format_overrides:
+    - goos: windows
+      format: zip
+
+# Release customization
+release:
+  github:
+    owner: rdtr
+    name: bq-partition-porter
+
+brew:
+  github:
+    owner: rdtr
+    name: homebrew-bq-partition-porter
+
+  # homepage: ""
+
+  install: |
+    bin.install "bq-partition-porter"

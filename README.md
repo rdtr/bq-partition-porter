@@ -37,7 +37,11 @@ Usage of bq-partition-porter:
 
 Example:
 ```
-./bq-partition-porter -p my-gcp-project -d=my-dataset -t=my-table -s=2017-08-30 -e=2017-09-27 -g=gs://my-bucket/rescue -o=export
+./bq-partition-porter -p=my-gcp-project -d=my-dataset -t=my-table -s=2017-08-30 -e=2017-09-27 -g=gs://my-bucket/rescue -o=export
+exporting my-dataset.my-table$20170830 succeeded
+exporting my-dataset.my-table$20170831 succeeded
+:
+:
 ```
 
 ## Warning
