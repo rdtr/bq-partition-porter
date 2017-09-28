@@ -21,8 +21,8 @@ var startTime, endTime time.Time
 
 func init() {
 	flag.StringVar(&operation, "o", "", "operation to perform, either import or export")
-	flag.StringVar(&startDate, "s", "", "start date to import/export")
-	flag.StringVar(&endDate, "e", "", "end date to import/export")
+	flag.StringVar(&startDate, "s", "", "start date to import/export, YYYY-MM-DD format")
+	flag.StringVar(&endDate, "e", "", "end date to import/export, YYYY-MM-DD format")
 	flag.StringVar(&projectID, "p", "", "target project")
 	flag.StringVar(&dataset, "d", "", "target dataset")
 	flag.StringVar(&table, "t", "", "target table name")
