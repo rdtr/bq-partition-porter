@@ -14,6 +14,14 @@ gs://your_bucket/prefix/20170907/*.json
 :
 ```
 
+## Installation
+
+via Homebrew.
+```
+$ brew tap rdtr/homebrew-bq-partition-porter
+$ brew install bq-partition-porter
+```
+
 ## Usage
 ```
 Usage of bq-partition-porter:
@@ -35,25 +43,43 @@ Usage of bq-partition-porter:
 
 `start date` and `end date` work in an inclusive manner.
 
-Example:
+## Example:
+### Export
 ```
-./bq-partition-porter -p=my-gcp-project -d=my-dataset -t=my-table -s=2017-08-30 -e=2017-09-27 -g=gs://my-bucket/rescue -o=export
+$ bq-partition-porter -p=my-gcp-project -d=my-dataset -t=my-table -s=2017-08-30 -e=2017-09-27 -g=gs://my-bucket/temp -o=export
 exporting my-dataset.my-table$20170830 succeeded
 exporting my-dataset.my-table$20170831 succeeded
 :
 :
 ```
 
-## Warning
+In the example above, rows in `dataset.my-table$YYYYMMDD` on BigQueyr will be exported into `gs://my-bucket-temp/YYYYMMDD/*.json` respectively.
 
-BigQuery export has following limits: 1,000 exports per day, up to 10TB
+### Import
+```
+$ bq-partition-porter -p=my-gcp-project -d=my-dataset -t=my-table -s=2017-08-30 -e=2017-09-27 -g=gs://my-bucket/temp -o=import
+importing gs://my-bucket/temp/20170830/* to dataset.my-table$20170830 succeeded
+importing gs://my-bucket/temp/20170831/* to dataset.my-table$20170831 succeeded
+:
+:
+```
+
+In the example abobe, files on `gs://my-bucket-temp/YYYYMMDD/*` will be loaded into `dataset.my-table$YYYYMMDD` respectively.
+
+## Limitation
+Currently only supported format is "NEWLINE_DELIMITED_JSON" for both export / import.
+
+Also, BigQuery export has following limits:
+```
+1,000 exports per day, up to 10TB
+```
 So you can't export beyond this quota by using this tool.
 
 Also, currently import function using following hard-coded desposition:
 ```
-		importer.CreateDisposition = bigquery.CreateIfNeeded
-		importer.WriteDisposition = bigquery.WriteTruncate
+importer.CreateDisposition = bigquery.CreateIfNeeded
+importer.WriteDisposition = bigquery.WriteTruncate
 ```
 
-So the whole table is replaced. I recommend first you import to a temp table then
+So the whole table is replaced with data imported. I recommend first you import to a temp table then
 if the data looks OK, copy the temp table to the actual destination.
