@@ -23,6 +23,7 @@ $ brew install bq-partition-porter
 ```
 
 ## Usage
+
 ```
 Usage of bq-partition-porter:
   -d string
@@ -67,14 +68,17 @@ importing gs://my-bucket/temp/20170831/* to dataset.my-table$20170831 succeeded
 In the example abobe, files on `gs://my-bucket-temp/YYYYMMDD/*` will be loaded into `dataset.my-table$YYYYMMDD` respectively.
 
 ## Limitation
+### Format
 Currently only supported format is "NEWLINE_DELIMITED_JSON" for both export / import.
 
+### Quota
 Also, BigQuery export has following limits:
 ```
 1,000 exports per day, up to 10TB
 ```
 So you can't export beyond this quota by using this tool.
 
+### Desposition
 Also, currently import function using following hard-coded desposition:
 ```
 importer.CreateDisposition = bigquery.CreateIfNeeded
@@ -83,3 +87,7 @@ importer.WriteDisposition = bigquery.WriteTruncate
 
 So the whole table is replaced with data imported. I recommend first you import to a temp table then
 if the data looks OK, copy the temp table to the actual destination.
+
+### Note
+Even though a table (or specified partition) is empty, 0 byte file is created on GCS.
+It is not a problem when you try importing the bucket back to BigQuery, but just note that it may produce usuless resources.
