@@ -43,6 +43,7 @@ Usage of bq-partition-porter:
 ```
 
 `start date` and `end date` work in an inclusive manner.
+So if you want to just load to/extract from a single partition, just specify the same corresponding date for both `s` and `e` flags.
 
 ## Example:
 ### Export
