@@ -1,0 +1,97 @@
+hash: 1159e8e02b47edcec178f2b7713b7d9c1e4ea0eac30c84c8b0c3dd3ba0b21cb2
+updated: 2017-09-27T17:35:53.888536989-07:00
+imports:
+- name: cloud.google.com/go
+  version: f6de2c509ed9d2af648c3c147207eaaf97149aed
+  subpackages:
+  - bigquery
+  - civil
+  - compute/metadata
+  - internal
+  - internal/atomiccache
+  - internal/fields
+  - internal/optional
+  - internal/version
+- name: github.com/golang/protobuf
+  version: 130e6b02ab059e7b717a096f397c5b60111cae74
+  subpackages:
+  - proto
+  - ptypes
+  - ptypes/any
+  - ptypes/duration
+  - ptypes/timestamp
+- name: github.com/googleapis/gax-go
+  version: 317e0006254c44a0ac427cc52a0e083ff0b9622f
+- name: golang.org/x/net
+  version: 0a9397675ba34b2845f758fe3cd68828369c6517
+  subpackages:
+  - context
+  - context/ctxhttp
+  - http2
+  - http2/hpack
+  - idna
+  - internal/timeseries
+  - lex/httplex
+  - trace
+- name: golang.org/x/oauth2
+  version: 13449ad91cb26cb47661c1b080790392170385fd
+  subpackages:
+  - google
+  - internal
+  - jws
+  - jwt
+- name: golang.org/x/text
+  version: 1cbadb444a806fd9430d14ad08967ed91da4fa0a
+  subpackages:
+  - secure/bidirule
+  - transform
+  - unicode/bidi
+  - unicode/norm
+- name: google.golang.org/api
+  version: cf8a9e7cedca7843a0fdd8adc9d019e84349768d
+  subpackages:
+  - bigquery/v2
+  - gensupport
+  - googleapi
+  - googleapi/internal/uritemplates
+  - googleapi/transport
+  - internal
+  - iterator
+  - option
+  - transport/http
+- name: google.golang.org/appengine
+  version: 24e4144ec923c2374f6b06610c0df16a9222c3d9
+  subpackages:
+  - internal
+  - internal/app_identity
+  - internal/base
+  - internal/datastore
+  - internal/log
+  - internal/modules
+  - internal/remote_api
+  - internal/urlfetch
+  - urlfetch
+- name: google.golang.org/genproto
+  version: 1e559d0a00eef8a9a43151db4665280bd8dd5886
+  subpackages:
+  - googleapis/rpc/status
+- name: google.golang.org/grpc
+  version: a68137c92756bf6ac0f9cfa5299f7dfd0af5dfe2
+  subpackages:
+  - balancer
+  - codes
+  - connectivity
+  - credentials
+  - grpclb/grpc_lb_v1/messages
+  - grpclog
+  - internal
+  - keepalive
+  - metadata
+  - naming
+  - peer
+  - resolver
+  - stats
+  - status
+  - tap
+  - transport
+testImports: []
